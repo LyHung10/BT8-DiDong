@@ -37,13 +37,16 @@ android {
 }
 
 dependencies {
-
+    implementation(libs.autoimageslider)
+    implementation(libs.retrofit)
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
     implementation(libs.glide)
     testImplementation(libs.junit)
+    implementation(libs.circleindicator)
+    implementation(libs.converter.gson)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
 }

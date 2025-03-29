@@ -18,48 +18,47 @@ import java.util.List;
 import vn.iotstart.myapplication.Model.IconModel;
 import vn.iotstart.myapplication.R;
 
-public class IconAdapter extends RecyclerView.Adapter<IconAdapter.IconHolder> {
+public class IconAdapter extends RecyclerView.Adapter<IconAdapter.IconViewHolder> {
     private Context context;
-    private List<IconModel> arrayList;
+    private List<IconModel> iconList;
 
-    public IconAdapter(Context context, List<IconModel> arrayList) {
+    public IconAdapter(Context context, List<IconModel> iconList) {
         this.context = context;
-        this.arrayList = arrayList;
+        this.iconList = iconList;
     }
 
     @NonNull
     @Override
-    public IconHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_icon_promotion, parent, false);
-        return new IconHolder(view);
+    public IconViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(context).inflate(R.layout.item_icon_promotion, parent, false);
+        return new IconViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull IconHolder holder, int position) {
-        IconModel iconModel = arrayList.get(position);
-        Glide.with(context).load(iconModel.getImgId()).into(holder.imageView);
-        holder.tvIcon.setText(iconModel.getDesc());
+    public void onBindViewHolder(@NonNull IconViewHolder holder, int position) {
+        IconModel iconModel = iconList.get(position);
+        holder.imageView.setImageResource(iconModel.getImgId());
+        holder.textView.setText(iconModel.getDesc()); // Gán tên hình
     }
 
     @Override
     public int getItemCount() {
-        return (arrayList != null) ? arrayList.size() : 0;
+        return iconList.size();
     }
 
-    public static class IconHolder extends RecyclerView.ViewHolder {
-        private ImageView imageView;
-        private TextView tvIcon;
+    public static class IconViewHolder extends RecyclerView.ViewHolder {
+        ImageView imageView;
+        TextView textView;
 
-        public IconHolder(View itemView) {
+        public IconViewHolder(@NonNull View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.ivImgIcon);
-            tvIcon = itemView.findViewById(R.id.tvIcon);
+            textView = itemView.findViewById(R.id.tvIcon);
         }
     }
-    public void setListener(List<IconModel> iconModelList) {
-        this.arrayList = iconModelList;
-        notifyDataSetChanged();
+    public void setListener(List<IconModel> filteredList) {
+        this.iconList = filteredList;
+        notifyDataSetChanged(); // Cập nhật RecyclerView
     }
-}
 
+}
