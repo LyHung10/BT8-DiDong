@@ -18,6 +18,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".ActivityBT4.SliderViewBai4"
+            android:exported="false" />
+        <activity
             android:name=".ActivityBT3.ViewFlipperActivityCau1"
             android:exported="false" />
         <activity
