@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId = "vn.iotstart.myapplication"
-        minSdk = 24
+        minSdk = 28
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
@@ -37,13 +37,14 @@ android {
 }
 
 dependencies {
-    implementation(libs.autoimageslider)
+    implementation(libs.imageSlideshow)
     implementation(libs.retrofit)
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
     implementation(libs.glide)
+    implementation("com.github.ictfoysal:multilibrary:6.0")
     testImplementation(libs.junit)
     implementation(libs.circleindicator)
     implementation(libs.converter.gson)
